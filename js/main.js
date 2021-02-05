@@ -13,7 +13,7 @@ const random = (a, b) => {
 let b = random(5, 10);
 console.log(b);
 
-const randomToFxed = (a, b) => {
+const randomToFixed = (a, b) => {
   let minNumber = a;
   let maxNumber = b;
   if (minNumber >= maxNumber) {
@@ -25,5 +25,5 @@ const randomToFxed = (a, b) => {
   }
   return null;
 }
-let a = random(5, 10)
+let a = randomToFixed(5, 10)
 console.log(a);
