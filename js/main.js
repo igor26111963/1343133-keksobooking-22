@@ -11,7 +11,7 @@ function random(a, b) {
   return null;
 }
 random(5, 10);
-console.log();
+// console.log();
 
 function randomToFixed(a, b, c) {
   let minNumber = a;
@@ -27,4 +27,4 @@ function randomToFixed(a, b, c) {
   return null;
 }
 randomToFixed(5, 10, 4)
-console.log();
+// console.log();
