@@ -3,22 +3,22 @@
 //  } Функция возвращающая случайное целое число из заданого интервала.
 
 const random = (a, b) => {
-  let minNumber = a; 
+  let minNumber = a;
   let maxNumber = b;
   if (minNumber >= maxNumber) {
 		minNumber = b;
 		maxNumber = a;
   }
   if (minNumber >= 0 && maxNumber > 0) {
-	  return Math.floor(Math.random() * (maxNumber - minNumber + 1)) + minNumber;
+		return Math.floor(Math.random() * (maxNumber - minNumber + 1)) + minNumber;
+  }
+	return null;
 }
-  return null; 
-}
-// let c = random (5, 10);
-// console.log(c);
+let c = random (5, 10);
+console.log(c);
 
 
-// функция возвращающая случайное число с плавающей запятой из заданого интенвала.  
+// функция возвращающая случайное число с плавающей запятой из заданого интенвала.
 
 const randomToFixed = (a, b) => {
 	let minNumber = a;
@@ -32,5 +32,5 @@ const randomToFixed = (a, b) => {
 		}
 	return null;
 }
-// let d = randomToFixed (4, 10);
-// console.log(d);
+let d = randomToFixed (4, 10);
+console.log(d);
