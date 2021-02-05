@@ -1,4 +1,4 @@
-const random = (a, b) => {
+function random(a, b) {
   let minNumber = a;
   let maxNumber = b;
   if (minNumber >= maxNumber) {
@@ -10,10 +10,10 @@ const random = (a, b) => {
   }
   return null;
 }
-// let b = random(5, 10);
-// console.log(b);
+random(5, 10);
+console.log();
 
-const randomToFixed = (a, b, c) => {
+function randomToFixed(a, b, c) {
   let minNumber = a;
   let maxNumber = b;
   let number_of_signs = c;
@@ -22,9 +22,9 @@ const randomToFixed = (a, b, c) => {
     maxNumber = a;
   }
   if (minNumber >= 0 && maxNumber > 0) {
-    return ((Math.random() * (maxNumber - minNumber + 1)) + minNumber) * Math.pow(10, number_of_signs) / Math.floor(Math.pow(10, number_of_signs));
+    return Math.floor(((Math.random() * (maxNumber - minNumber + 1)) + minNumber) * Math.pow(10, number_of_signs)) / (Math.pow(10, number_of_signs));
   }
   return null;
 }
-// let a = randomToFixed(5, 10, 4)
-// console.log(a);
+randomToFixed(5, 10, 4)
+console.log();
