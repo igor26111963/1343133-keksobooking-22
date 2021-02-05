@@ -10,7 +10,7 @@ const random = (a, b) => {
   }
   return null;
 }
-let b = random(5, 10);
+// let b = random(5, 10);
 // console.log(b);
 
 const randomToFixed = (a, b, c) => {
@@ -26,5 +26,5 @@ const randomToFixed = (a, b, c) => {
   }
   return null;
 }
-let a = randomToFixed(5, 10, 4)
+// let a = randomToFixed(5, 10, 4)
 // console.log(a);
