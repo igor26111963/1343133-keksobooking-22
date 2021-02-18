@@ -126,6 +126,6 @@ const generateCardsList = () => {
     let card = generateCard();
     list.push(card);
   }
-  return list
+  return generateCardsList()
 }
 
