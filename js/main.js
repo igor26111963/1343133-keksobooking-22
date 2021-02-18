@@ -41,7 +41,7 @@ let price = () => random(100, 1000);
 
 // type
 
-const type = ['palace', 'flat', 'house', 'bungalow',];
+const type = ['palace', 'flat', 'house', 'bungalow'];
 let randomType = Math.floor(Math.random() * type.length);
 
 // rooms
@@ -54,12 +54,12 @@ let guests = () => random(0, 3);
 
 // checkin
 
-const checkin = ['12:00', '13:00', '14:00',];
+const checkin = ['12:00', '13:00', '14:00'];
 let randomCheckin = Math.floor(Math.random() * checkin.length);
 
 // checkout
 
-const checkout = ['12:00', '13:00', '14:00',];
+const checkout = ['12:00', '13:00', '14:00'];
 let randomCheckout = Math.floor(Math.random() * checkout.length);
 
 // features
