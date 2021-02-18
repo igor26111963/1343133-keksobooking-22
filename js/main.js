@@ -128,4 +128,4 @@ const generateCardsList = () => {
   }
   return list
 }
-console.log(generateCardsList());
+
