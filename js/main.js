@@ -66,10 +66,10 @@ let randomCheckout = Math.floor(Math.random() * checkout.length);
 
 let randomfeaturesLength = random(0, 5);
 let featuresCard = [];
-let featuresList = ['wifi', 'dishwasher', 'parking', 'washer', 'elevator', 'conditioner',];
+let featuresList = ['wifi', 'dishwasher', 'parking', 'washer', 'elevator', 'conditioner'];
 for (let option = 0; option <= randomfeaturesLength; option++) {
   featuresCard.push(featuresList[option])
-};
+}
 
 // photos
 
@@ -78,14 +78,14 @@ let randomNewPhotos = [];
 let randomPhotos = ['http://o0.github.io/assets/images/tokyo/hotel1.jpg', 'http://o0.github.io/assets/images/tokyo/hotel2.jpg', 'http://o0.github.io/assets/images/tokyo/hotel3.jpg'];
 for (let photo = 0; photo <= randomPhotosLength; photo++) {
   randomNewPhotos.push(randomPhotos[photo])
-};
+}
 
 // location.
 
-let coordinates = [
-  'coordinatesX',
-  'coordinatesY',
-];
+// let coordinates = [
+//   'coordinatesX',
+//   'coordinatesY',
+// ];
 
 let coordinatesX = () => randomToFixed(35.65000, 35.70000, 5);
 let coordinatesY = () => randomToFixed(139.70000, 139.80000, 5);
@@ -96,7 +96,7 @@ let coordinatesY = () => randomToFixed(139.70000, 139.80000, 5);
 const generateCard = () => {
   return {
     author: {
-      avatar: `img / avatars / user0${avatar(1, 8)}.png`
+      avatar: `img / avatars / user0${avatar(1, 8)}.png`,
     },
     offer: {
       title: 'Сдаётся уютное жильё',
@@ -113,7 +113,7 @@ const generateCard = () => {
     },
     location: {
       locationX: `${coordinatesX()} `,
-      locationY: `${coordinatesY()} `
+      locationY: `${coordinatesY()} `,
     },
   }
 }
