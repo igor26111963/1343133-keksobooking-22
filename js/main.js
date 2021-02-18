@@ -10,7 +10,7 @@ function random(a, b) {
   }
   return null;
 }
-random(5, 10);
+// random(5, 10);
 // console.log();
 
 function randomToFixed(a, b, c) {
@@ -29,37 +29,15 @@ function randomToFixed(a, b, c) {
 randomToFixed(5, 10, 4)
 // console.log();
 
-// создаем эллемент будующего массива.
 
-// const postcard = [author, offer, location];
 
 // author.
 
-// const author = {
-//   avatar: 'img/avatars/user{{xx}}.png',
-// };
-
-// offer.
-
-// const offer = [title, address, price, type, rooms, guests, checkin, checkout, features, description, photos];
+let avatar = () => random(1, 8);
 
 // price
 
-let price = (a, b) => {
-  let minPrice = a;
-  let maxPrice = b;
-  if (minPrice >= maxPrice) {
-    minPrice = b;
-    maxPrice = a;
-  }
-  if (minPrice >= 0 && maxPrice > 0) {
-    return Math.floor(Math.random() * (maxPrice - minPrice + 1)) + minPrice;
-  }
-  return null;
-}
-// price(5, 10);
-console.log(price(5, 10));
-
+let price = () => random(100, 1000);
 
 // type
 
@@ -71,45 +49,17 @@ let type = [
 ];
 let typeIndex = () => {
   const randomTypeIndex = _.random(0, type.length - 1);
-  return {
-    type: type[randomTypeIndex]
-  };
+  return type[randomTypeIndex]
 }
-console.log(typeIndex());
+
 
 // rooms
 
-let rooms = (a, b) => {
-  let minRooms = a;
-  let maxRooms = b;
-  if (minRooms >= maxRooms) {
-    minRooms = b;
-    maxRooms = a;
-  }
-  if (minRooms >= 0 && maxRooms > 0) {
-    return Math.floor(Math.random() * (maxRooms - minRooms + 1)) + minRooms;
-  }
-  return null;
-}
-// rooms(5, 10);
-console.log(rooms(1, 4));
+let rooms = () => random(1, 4);
 
 // guests
 
-let guests = (a, b) => {
-  minGuests = a;
-  maxGuests = b;
-  if (minGuests >= maxGuests) {
-    minGuests = b;
-    maxGuests = a;
-  }
-  if (minGuests >= 0 && maxGuests > 0) {
-    return Math.floor(Math.random() * (maxGuests - minGuests + 1)) + minGuests;
-  }
-  return null;
-}
-// guests(5, 10);
-console.log(guests(0, 10));
+let guests = () => random(0, 3);
 
 // checkin
 
@@ -120,11 +70,8 @@ let checkin = [
 ];
 let checkinIndex = () => {
   const randomCheckinIndex = _.random(0, checkin.length - 1);
-  return {
-    checkin: checkin[randomCheckinIndex]
-  };
+  return checkin[randomCheckinIndex]
 }
-console.log(checkinIndex());
 
 // checkout
 
@@ -135,15 +82,26 @@ let checkout = [
 ];
 let checkoutIndex = () => {
   const randomCheckoutIndex = _.random(0, checkout.length - 1);
-  return {
-    checkout: checkout[randomCheckoutIndex]
-  };
+  return checkout[randomCheckoutIndex]
 }
-console.log(checkoutIndex());
 
 // features
 
+let randomfeaturesLength = random(0, 5);
+let featuresCard = [];
+let featuresList = ['wifi', 'dishwasher', 'parking', 'washer', 'elevator', 'conditioner',];
+for (let option = 0; option <= randomfeaturesLength; option++) {
+  featuresCard.push(featuresList[option])
+};
 
+// photos
+
+let randomPhotosLength = random(0, 2);
+let randomNewPhotos = [];
+let randomPhotos = ['http://o0.github.io/assets/images/tokyo/hotel1.jpg', 'http://o0.github.io/assets/images/tokyo/hotel2.jpg', 'http://o0.github.io/assets/images/tokyo/hotel3.jpg'];
+for (let photo = 0; photo <= randomPhotosLength; photo++) {
+  randomNewPhotos.push(randomPhotos[photo])
+};
 
 // location.
 
@@ -151,32 +109,46 @@ let coordinates = [
   'coordinatesX',
   'coordinatesY',
 ];
-function coordinatesX(a, b, c) {
-  let minСoordinatesX = a;
-  let maxСoordinatesX = b;
-  let number_of_signs = c;
-  if (minСoordinatesX >= maxСoordinatesX) {
-    minСoordinatesX = b;
-    maxСoordinatesX = a;
-  }
-  if (minСoordinatesX >= 0 && maxСoordinatesX > 0) {
-    return Math.floor(((Math.random() * (maxСoordinatesX - minСoordinatesX + 1)) + minСoordinatesX) * Math.pow(10, number_of_signs)) / (Math.pow(10, number_of_signs));
-  }
-  return null;
-}
-console.log(coordinatesX(35.65000, 35.70000, 5));
 
-function coordinatesY(a, b, c) {
-  let minСoordinatesY = a;
-  let maxСoordinatesY = b;
-  let number_of_signs = c;
-  if (minСoordinatesY >= maxСoordinatesY) {
-    minСoordinatesY = b;
-    maxСoordinatesY = a;
+let coordinatesX = () => randomToFixed(35.65000, 35.70000, 5);
+let coordinatesY = () => randomToFixed(139.70000, 139.80000, 5);
+
+
+// создаем эллемент будующего массива.
+
+const generateCard = () => {
+  return {
+    author: {
+      avatar: `img / avatars / user0${avatar(1, 8)}.png`
+    },
+    offer: {
+      title: 'Сдаётся уютное жильё',
+      address: `${coordinatesX()} , ${coordinatesY()} `,
+      price: `${price()} `,
+      type: `${typeIndex()} `,
+      rooms: `${rooms()} `,
+      guests: `${guests()} `,
+      checkin: `${checkinIndex()} `,
+      checkout: `${checkoutIndex()} `,
+      features: `${featuresCard}`,
+      description: 'Жилье, которое Вы незахотите покидать!',
+      photos: `${randomNewPhotos}`,
+    },
+    location: {
+      locationX: `${coordinatesX()} `,
+      locationY: `${coordinatesY()} `
+    },
   }
-  if (minСoordinatesY >= 0 && maxСoordinatesY > 0) {
-    return Math.floor(((Math.random() * (maxСoordinatesY - minСoordinatesY + 1)) + minСoordinatesY) * Math.pow(10, number_of_signs)) / (Math.pow(10, number_of_signs));
-  }
-  return null;
 }
-console.log(coordinatesY(139.70000, 139.80000, 5));
+
+// создаем массив
+
+const generateCardsList = () => {
+  const list = [];
+  for (let i = 0; i < 10; i++) {
+    let card = generateCard();
+    list.push(card);
+  }
+  return list
+}
+console.log(generateCardsList());
