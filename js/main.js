@@ -41,17 +41,8 @@ let price = () => random(100, 1000);
 
 // type
 
-let type = [
-  'palace',
-  'flat',
-  'house',
-  'bungalow',
-];
-let typeIndex = () => {
-  const randomTypeIndex = _.random(0, type.length - 1);
-  return type[randomTypeIndex]
-}
-
+const type = ['palace', 'flat', 'house', 'bungalow',];
+let randomType = Math.floor(Math.random() * type.length);
 
 // rooms
 
@@ -63,27 +54,13 @@ let guests = () => random(0, 3);
 
 // checkin
 
-let checkin = [
-  '12:00',
-  '13:00',
-  '14:00',
-];
-let checkinIndex = () => {
-  const randomCheckinIndex = _.random(0, checkin.length - 1);
-  return checkin[randomCheckinIndex]
-}
+const checkin = ['12:00', '13:00', '14:00',];
+let randomCheckin = Math.floor(Math.random() * checkin.length);
 
 // checkout
 
-let checkout = [
-  '12:00',
-  '13:00',
-  '14:00',
-];
-let checkoutIndex = () => {
-  const randomCheckoutIndex = _.random(0, checkout.length - 1);
-  return checkout[randomCheckoutIndex]
-}
+const checkout = ['12:00', '13:00', '14:00',];
+let randomCheckout = Math.floor(Math.random() * checkout.length);
 
 // features
 
@@ -125,11 +102,11 @@ const generateCard = () => {
       title: 'Сдаётся уютное жильё',
       address: `${coordinatesX()} , ${coordinatesY()} `,
       price: `${price()} `,
-      type: `${typeIndex()} `,
+      type: `${type[randomType]} `,
       rooms: `${rooms()} `,
       guests: `${guests()} `,
-      checkin: `${checkinIndex()} `,
-      checkout: `${checkoutIndex()} `,
+      checkin: `${checkin[randomCheckin]} `,
+      checkout: `${checkout[randomCheckout]} `,
       features: `${featuresCard}`,
       description: 'Жилье, которое Вы незахотите покидать!',
       photos: `${randomNewPhotos}`,
