@@ -27,8 +27,8 @@ function randomToFixed(a, b, c) {
   return null;
 }
 
-function getRandomInt(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
+function getRandomElementFromArray(array) {
+  return array[random(0, array.length - 1)];
 }
 
 
@@ -44,9 +44,6 @@ let price = () => random(100, 1000);
 // type
 
 const type = ['palace', 'flat', 'house', 'bungalow'];
-function getRandom(type) {
-  return type[random(0, type.length - 1)];
-}
 
 // rooms
 
@@ -59,17 +56,10 @@ let guests = () => random(0, 3);
 // checkin
 
 const checkin = ['12:00', '13:00', '14:00'];
-function getRandom(checkin) {
-  return checkin[random(0, checkin.length - 1)];
-}
 
 // checkout
 
 const checkout = ['12:00', '13:00', '14:00'];
-function getRandom(checkout) {
-  return checkout[random(0, checkout.length - 1)];
-}
-
 
 // features
 
@@ -111,11 +101,11 @@ const generateCard = () => {
       title: 'Сдаётся уютное жильё',
       address: `${coordinatesX()} , ${coordinatesY()} `,
       price: `${price()} `,
-      type: `${getRandom(type)} `,
+      type: `${getRandomElementFromArray(type)} `,
       rooms: `${rooms()} `,
       guests: `${guests()} `,
-      checkin: `${getRandom(checkin)} `,
-      checkout: `${getRandom(checkout)} `,
+      checkin: `${getRandomElementFromArray(checkin)} `,
+      checkout: `${getRandomElementFromArray(checkout)} `,
       features: `${getRandomFeatures()}`,
       description: 'Жилье, которое Вы незахотите покидать!',
       photos: `${getRandomPhotos()}`,
@@ -138,4 +128,4 @@ const generateCardsList = () => {
   return list
 }
 generateCardsList();
-// console.log(generateCardsList());
+// npm testconsole.log(generateCardsList());
