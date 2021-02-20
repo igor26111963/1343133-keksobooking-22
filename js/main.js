@@ -1,3 +1,5 @@
+// const { get } = require("browser-sync");
+
 function random(a, b) {
   let minNumber = a;
   let maxNumber = b;
@@ -10,8 +12,6 @@ function random(a, b) {
   }
   return null;
 }
-// random(5, 10);
-// console.log();
 
 function randomToFixed(a, b, c) {
   let minNumber = a;
@@ -26,12 +26,14 @@ function randomToFixed(a, b, c) {
   }
   return null;
 }
-randomToFixed(5, 10, 4)
-// console.log();
+
+function getRandomInt(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 
 
 
-// author.
+// author
 
 let avatar = () => random(1, 8);
 
@@ -42,7 +44,9 @@ let price = () => random(100, 1000);
 // type
 
 const type = ['palace', 'flat', 'house', 'bungalow'];
-let randomType = Math.floor(Math.random() * type.length);
+function getRandom(type) {
+  return type[random(0, type.length - 1)];
+}
 
 // rooms
 
@@ -55,41 +59,46 @@ let guests = () => random(0, 3);
 // checkin
 
 const checkin = ['12:00', '13:00', '14:00'];
-let randomCheckin = Math.floor(Math.random() * checkin.length);
+function getRandom(checkin) {
+  return checkin[random(0, checkin.length - 1)];
+}
 
 // checkout
 
 const checkout = ['12:00', '13:00', '14:00'];
-let randomCheckout = Math.floor(Math.random() * checkout.length);
+function getRandom(checkout) {
+  return checkout[random(0, checkout.length - 1)];
+}
+
 
 // features
 
-let randomfeaturesLength = random(0, 5);
-let featuresCard = [];
-let featuresList = ['wifi', 'dishwasher', 'parking', 'washer', 'elevator', 'conditioner'];
-for (let option = 0; option <= randomfeaturesLength; option++) {
-  featuresCard.push(featuresList[option])
+let getRandomFeatures = () => {
+  let randomFeaturesLength = random(0, Array.length);
+  let featuresCard = [];
+  const featuresList = ['wifi', 'dishwasher', 'parking', 'washer', 'elevator', 'conditioner'];
+  for (let option = 0; option <= randomFeaturesLength; option++) {
+    featuresCard.push(featuresList[option])
+  }
+  return featuresCard
 }
 
 // photos
 
-let randomPhotosLength = random(0, 2);
-let randomNewPhotos = [];
-let randomPhotos = ['http://o0.github.io/assets/images/tokyo/hotel1.jpg', 'http://o0.github.io/assets/images/tokyo/hotel2.jpg', 'http://o0.github.io/assets/images/tokyo/hotel3.jpg'];
-for (let photo = 0; photo <= randomPhotosLength; photo++) {
-  randomNewPhotos.push(randomPhotos[photo])
+let getRandomPhotos = () => {
+  let randomPhotosLength = random(0, Array.length);
+  let randomNewPhotos = [];
+  const randomPhotos = ['http://o0.github.io/assets/images/tokyo/hotel1.jpg', 'http://o0.github.io/assets/  images/tokyo/hotel2.jpg', 'http://o0.github.io/assets/images/tokyo/hotel3.jpg'];
+  for (let photo = 0; photo <= randomPhotosLength; photo++) {
+    randomNewPhotos.push(randomPhotos[photo])
+  }
+  return randomNewPhotos;
 }
 
 // location.
 
-// let coordinates = [
-//   'coordinatesX',
-//   'coordinatesY',
-// ];
-
 let coordinatesX = () => randomToFixed(35.65000, 35.70000, 5);
 let coordinatesY = () => randomToFixed(139.70000, 139.80000, 5);
-
 
 // создаем эллемент будующего массива.
 
@@ -102,14 +111,14 @@ const generateCard = () => {
       title: 'Сдаётся уютное жильё',
       address: `${coordinatesX()} , ${coordinatesY()} `,
       price: `${price()} `,
-      type: `${type[randomType]} `,
+      type: `${getRandom(type)} `,
       rooms: `${rooms()} `,
       guests: `${guests()} `,
-      checkin: `${checkin[randomCheckin]} `,
-      checkout: `${checkout[randomCheckout]} `,
-      features: `${featuresCard}`,
+      checkin: `${getRandom(checkin)} `,
+      checkout: `${getRandom(checkout)} `,
+      features: `${getRandomFeatures()}`,
       description: 'Жилье, которое Вы незахотите покидать!',
-      photos: `${randomNewPhotos}`,
+      photos: `${getRandomPhotos()}`,
     },
     location: {
       locationX: `${coordinatesX()} `,
@@ -129,3 +138,4 @@ const generateCardsList = () => {
   return list
 }
 generateCardsList();
+// console.log(generateCardsList());
